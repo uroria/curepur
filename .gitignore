@@ -4,6 +4,7 @@ hs_err_pid*
 
 # Intellij
 .idea/
+!.idea/icon.png
 *.iml
 *.ipr
 *.iws
