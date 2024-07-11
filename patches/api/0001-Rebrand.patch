@@ -5,7 +5,7 @@ Subject: [PATCH] Rebrand
 
 
 diff --git a/src/main/java/io/papermc/paper/ServerBuildInfo.java b/src/main/java/io/papermc/paper/ServerBuildInfo.java
-index 7107eabf02d9d9b69d97c978ba421ad52031ec3f..e91f657ab2ed624abcf60cf9769990f8386bb8e5 100644
+index 7107eabf02d9d9b69d97c978ba421ad52031ec3f..9fbd1e967e4e51b8ab036b5f8ca71e8088fa19ef 100644
 --- a/src/main/java/io/papermc/paper/ServerBuildInfo.java
 +++ b/src/main/java/io/papermc/paper/ServerBuildInfo.java
 @@ -25,6 +25,13 @@ public interface ServerBuildInfo {
@@ -16,7 +16,7 @@ index 7107eabf02d9d9b69d97c978ba421ad52031ec3f..e91f657ab2ed624abcf60cf9769990f8
 +    /**
 +     * The brand id for Curepur.
 +     */
-+    Key BRAND_PURPUR_ID = Key.key("uroria", "curepur");
++    Key BRAND_CUREPUR_ID = Key.key("uroria", "curepur");
 +    // Curepur end
 +
      /**
