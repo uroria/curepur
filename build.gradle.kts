@@ -90,34 +90,6 @@ paperweight {
     }
 }
 
-tasks.generateDevelopmentBundle {
-    apiCoordinates = "com.uroria.curepur:tentacles-api"
-    libraryRepositories.addAll(
-        "https://repo.maven.apache.org/maven2/",
-        paperMavenPublicUrl,
-        "https://repo.purpurmc.org/snapshots",
-    )
-}
-
-allprojects {
-    publishing {
-        repositories {
-            maven("https://repo.purpurmc.org/snapshots") {
-                name = "tentacles"
-                credentials(PasswordCredentials::class)
-            }
-        }
-    }
-}
-
-publishing {
-    publications.create<MavenPublication>("devBundle") {
-        artifact(tasks.generateDevelopmentBundle) {
-            artifactId = "dev-bundle"
-        }
-    }
-}
-
 tasks.register("printMinecraftVersion") {
     doLast {
         println(providers.gradleProperty("mcVersion").get().trim())
