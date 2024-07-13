@@ -1,0 +1,14 @@
+#file: noinspection YAMLSchemaValidation
+blank_issues_enabled: false
+contact_links:
+  #- name: Feature Request
+  #  url: https://github.com/PurpurMC/Purpur/discussions/new?category=feature-requests
+  #  about: Suggest an idea for Curepur
+  - name: Exploit Report
+    url: https://discord.uroria.com/
+    about: |
+      Since GitHub does not allow private issues, exploit reports are currently handled through our Discord.
+      To report an exploit, contact a team member on the Curepur Discord.
+  - name: Curepur Discord
+    url: https://discord.uroria.com/
+    about: If you are having issues with Spark profiling or have other minor issues, come join our Discord server for help!
