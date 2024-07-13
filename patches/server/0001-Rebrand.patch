@@ -155,10 +155,10 @@ index 710477ae27ebc5afdf0012ef0867d05efd293c24..d019d392a4d8a0d157b1b09f4a2558a8
      public CrashReport(String message, Throwable cause) {
          io.papermc.paper.util.StacktraceDeobfuscator.INSTANCE.deobfuscateThrowable(cause); // Paper
 diff --git a/src/main/java/net/minecraft/server/MinecraftServer.java b/src/main/java/net/minecraft/server/MinecraftServer.java
-index e6a23507b69a128aabf4f811d6099281b24583fd..3c3f7a8b1f28e1bb60de53af7ed2a30f368796ec 100644
+index 7115c04cacfd373b2d9ce0e34460aa695bb65bcd..658cd6d19ee2341abe1459e4885d225b09ee24a4 100644
 --- a/src/main/java/net/minecraft/server/MinecraftServer.java
 +++ b/src/main/java/net/minecraft/server/MinecraftServer.java
-@@ -1031,7 +1031,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
+@@ -1032,7 +1032,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
          shutdownThread = Thread.currentThread();
          org.spigotmc.WatchdogThread.doStop(); // Paper
          if (!isSameThread()) {
@@ -194,10 +194,10 @@ index 99597258e8e88cd9e2c901c4ac3ff7faeeabee2b..dcc7ba70e0eaa1e6c73da2a5cdaf795b
  
          if (stream != null) {
 diff --git a/src/main/java/org/spigotmc/WatchdogThread.java b/src/main/java/org/spigotmc/WatchdogThread.java
-index 71777757fc00dfb2f91abecc4443b65782e78300..fe47a501a00e06f66ce1188b62af22d270b2147d 100644
+index abe225593d325afee56f5b3a8f75aafc42a4560b..5f9ff0d9ffb5465588109ae69d72d6cf6a70bd64 100644
 --- a/src/main/java/org/spigotmc/WatchdogThread.java
 +++ b/src/main/java/org/spigotmc/WatchdogThread.java
-@@ -83,14 +83,14 @@ public class WatchdogThread extends Thread
+@@ -155,14 +155,14 @@ public class WatchdogThread extends Thread
                  if (isLongTimeout) {
                  // Paper end
                  log.log( Level.SEVERE, "------------------------------" );
@@ -215,7 +215,7 @@ index 71777757fc00dfb2f91abecc4443b65782e78300..fe47a501a00e06f66ce1188b62af22d2
                  //
                  if ( net.minecraft.world.level.Level.lastPhysicsProblem != null )
                  {
-@@ -112,12 +112,12 @@ public class WatchdogThread extends Thread
+@@ -184,12 +184,12 @@ public class WatchdogThread extends Thread
                  // Paper end
                  } else
                  {
@@ -228,9 +228,9 @@ index 71777757fc00dfb2f91abecc4443b65782e78300..fe47a501a00e06f66ce1188b62af22d2
 -                log.log( Level.SEVERE, "Server thread dump (Look for plugins here before reporting to Purpur!):" ); // Paper // Purpur
 +                log.log( Level.SEVERE, "Server thread dump (Look for plugins here before reporting to Curepur!):" ); // Paper // Purpur // Curepur
                  ca.spottedleaf.moonrise.patches.chunk_system.scheduling.ChunkTaskScheduler.dumpAllChunkLoadInfo(MinecraftServer.getServer(), isLongTimeout); // Paper - rewrite chunk system
+                 this.dumpTickingInfo(); // Paper - log detailed tick information
                  WatchdogThread.dumpThread( ManagementFactory.getThreadMXBean().getThreadInfo( MinecraftServer.getServer().serverThread.getId(), Integer.MAX_VALUE ), log );
-                 log.log( Level.SEVERE, "------------------------------" );
-@@ -132,7 +132,7 @@ public class WatchdogThread extends Thread
+@@ -205,7 +205,7 @@ public class WatchdogThread extends Thread
                      WatchdogThread.dumpThread( thread, log );
                  }
                  } else {
