@@ -1,0 +1,12 @@
+name: Bug Report
+description: Submit a new bug report
+body:
+  - type: markdown
+    attributes:
+      value: "Before reporting a bug here, please make sure you server's running on the latest stable version of Curepur."
+
+  - type: input
+    attributes:
+      label: "Spark link"
+      description: "Please share your Spark profilings through a link, not a screenshot! Screenshots inhibit our ability to figure out the real cause of the issue."
+      placeholder: "Output of command `/spark profiler --timeout 300`"
