@@ -1,0 +1,266 @@
+
+#  ███████╗███████╗██████╗ ██╗   ██╗███████╗██████╗
+#  ██╔════╝██╔════╝██╔══██╗██║   ██║██╔════╝██╔══██╗
+#  ███████╗█████╗  ██████╔╝██║   ██║█████╗  ██████╔╝
+#  ╚════██║██╔══╝  ██╔══██╗╚██╗ ██╔╝██╔══╝  ██╔══██╗
+#  ███████║███████╗██║  ██║ ╚████╔╝ ███████╗██║  ██║
+#  ╚══════╝╚══════╝╚═╝  ╚═╝  ╚═══╝  ╚══════╝╚═╝  ╚═╝
+#
+#  - Networking
+#  - Authentication
+#  - Logging
+#
+#  Credits:
+#   - YouHaveTrouble's Optimization guide: https://github.com/YouHaveTrouble/minecraft-optimization
+#   - Paper's Config docs: https://docs.papermc.io/paper/reference/configuration
+
+
+
+# ==================================================================
+#
+#   ███    ██ ███████ ████████ ██     ██  ██████  ██████  ██   ██
+#   ████   ██ ██         ██    ██     ██ ██    ██ ██   ██ ██  ██
+#   ██ ██  ██ █████      ██    ██  █  ██ ██    ██ ██████  █████
+#   ██  ██ ██ ██         ██    ██ ███ ██ ██    ██ ██   ██ ██  ██
+#   ██   ████ ███████    ██     ███ ███   ██████  ██   ██ ██   ██
+#
+#  - Socket configuration
+#  - Compresion
+#  - Rate-limits
+# ==================================================================
+[network]
+
+# =====================================================
+#  The IP address to bind to.
+#  Leave default to bind to all interfaces.
+#
+#   Default: "0.0.0.0"
+#
+#  @ minecraft.properties
+#    - `server-ip`
+# =====================================================
+ip-address = "0.0.0.0"
+
+# =====================================================
+#  The port to listen on connections.
+#
+#   Default: 25565
+#
+#  @ minecraft.properties
+#    - `server-port`
+# =====================================================
+port = 25565
+
+# =====================================================
+#  The number of bytes of a packet
+#  before it is compressed.
+#
+#  Setting it higher can save some CPU resources
+#  at the cost of bandwidth. Setting this higher may
+#  also hurt clients with slower network connections.
+#  If your server is in a network with a proxy or on
+#  the same machine (with less than 2 ms ping),
+#  disabling this (-1) will be beneficial, since
+#  internal network speeds can usually handle the
+#  additional uncompressed traffic.
+#
+#   Default: 256
+#   Disable: -1
+#
+#  @ minecraft.properties
+#    - `network-compression-threshold`
+# =====================================================
+compression-threshold = 256
+
+# =====================================================
+#  A higher compression level means less data
+#  transmitted at the cost of more CPU time.
+#  The default value is -1, which means that the
+#  server will use the default value of the defined
+#  compressor. Note that Paper is currently using
+#  the Velocity compressor, which uses a default
+#  compression level of 6 as a middle ground
+#  between performance and data transmission.
+#
+#   Default: -1
+#   Disable: -1
+#
+#  @ config/paper-global.yml
+#    - `misc.compression-level`
+# =====================================================
+compression-level = -1
+
+# =====================================================
+#  Sets the maximum allowed number of packets
+#  that can be sent before getting kicked.
+#  Setting this to 0 disables the limit.
+#
+#   Default: 0
+#   Disable: 0
+#
+#  @ minecraft.properties
+#    - `rate-limit`
+# =====================================================
+rate-limit = 0
+
+# =====================================================
+#  How long of a delay to enforce between
+#  connections from an IP address.
+#  Measured in milliseconds since last attempt.
+#
+#   Default: 4000
+#
+#  @ bukkit.yml
+#    - `settings.connection-throttle`
+# =====================================================
+throttle = 4000
+
+
+
+# ======================================
+#
+#    █████  ██    ██ ████████ ██   ██
+#   ██   ██ ██    ██    ██    ██   ██
+#   ███████ ██    ██    ██    ███████
+#   ██   ██ ██    ██    ██    ██   ██
+#   ██   ██  ██████     ██    ██   ██
+#
+#  - Mojang authentication
+#  - Forwarding of player-data
+# ======================================
+[auth]
+
+# =====================================================
+#  If set to true, the server checks all connecting
+#  players against Minecraft''s account database.
+#  This requires all connected players to have a valid
+#  Minecraft account and makes it impossible for
+#  cracked players to connect.
+#
+#   Default: true
+#
+#  Automatically disabled if `bungeecord` is enabled.
+#
+#  @ minecraft.properties
+#    - `online-mode`
+# =====================================================
+online-mode = true
+
+# =====================================================
+#  If the ISP/AS sent from the server is different
+#  from the one from Mojang Studios's authentication
+#  server, the player not allowed to join the server.
+#
+#   Default: false
+#
+#  Automatically disabled if `bungeecord` is enabled.
+#
+#  @ minecraft.properties
+#    - `prevent-proxy-connections`
+# =====================================================
+prevent-proxy-connections = false
+
+# =====================================================
+#  Whether to enable Bungeecord support, enabling:
+#   - Receiving forwarded player-data
+#     and source ip-addresses.
+#   - Support for binding to unix domain sockets.
+#
+#   Default: false
+#
+#  @ spigot.yml
+#    - `settings.bungeecord`
+# =====================================================
+bungeecord = false
+
+# =====================================================
+#  Whether the server should accept
+#  Velocity Modern Forwarding.
+#
+#   Default: false
+#
+#  @ config/paper-global.yml
+#    - `proxies.velocity.enabled`
+# =====================================================
+velocity.enabled = false
+
+# =====================================================
+#  Instructs the server how to handle player UUIDs
+#  and data when behind Velocity.
+#  Always set to match your proxy's
+#  online-mode setting.
+#
+#   Default: true
+#
+#  @ config/paper-global.yml
+#    - `proxies.velocity.online-mode`
+# =====================================================
+velocity.online-mode = true
+
+# =====================================================
+#  The secret string that is shared by your Velocity
+#  proxy and this server. This needs to match your
+#  proxy's secret as defined in the
+#  forwarding.secret file.
+#
+#   Default: "N/A"
+#
+#  @ config/paper-global.yml
+#    - `proxies.velocity.secret`
+# =====================================================
+velocity.secret = "N/A"
+
+# =====================================================
+#  Whether the server should process
+#  PROXY Protocol messages. This is completely
+#  unrelated to Velocity or BungeeCord. Only enable
+#  this if you're using HAProxy or similar.
+#
+#   Default: false
+#
+#  @ config/paper-global.yml
+#    - `proxies.proxy-protocol`
+# =====================================================
+proxy-protocol = false
+
+# =====================================================
+#  NOT OFFICIALLY SUPPORTED! USE AT OWN RISK.
+#
+#  Whether the server should validate usernames.
+#  While this may allow users with special
+#  characters in their name to join, it can also
+#  cause issues with commands and plugins.
+#
+#   Default: true
+#
+#  @ config/paper-global.yml
+#    - `unsupported-settings
+#           .perform-username-validation`
+# =====================================================
+perform-username-validation = true
+
+
+
+# ==================================================================
+#
+#   ██       ██████   ██████   ██████  ██ ███    ██  ██████
+#   ██      ██    ██ ██       ██       ██ ████   ██ ██
+#   ██      ██    ██ ██   ███ ██   ███ ██ ██ ██  ██ ██   ███
+#   ██      ██    ██ ██    ██ ██    ██ ██ ██  ██ ██ ██    ██
+#   ███████  ██████   ██████   ██████  ██ ██   ████  ██████
+#
+#  - Logger
+#  -
+# ==================================================================
+[logging]
+
+# =====================================================
+#  Whether the server should process
+#  PROXY Protocol messages. This is completely
+#  unrelated to Velocity or BungeeCord. Only enable
+#  this if you're using HAProxy or similar.
+#
+#   Default: false
+#
+#  @ System properties
+# =====================================================
