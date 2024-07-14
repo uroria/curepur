@@ -249,18 +249,68 @@ perform-username-validation = true
 #   ██      ██    ██ ██    ██ ██    ██ ██ ██  ██ ██ ██    ██
 #   ███████  ██████   ██████   ██████  ██ ██   ████  ██████
 #
-#  - Logger
-#  -
+#  - IP-Addresses
+#  - Deobfuscation
+#  - Commands
+#  - Deaths of villagers and named entities
 # ==================================================================
 [logging]
 
 # =====================================================
-#  Whether the server should process
-#  PROXY Protocol messages. This is completely
-#  unrelated to Velocity or BungeeCord. Only enable
-#  this if you're using HAProxy or similar.
+#  Whether player IP addresses should be logged
+#  by the server. This does not impact the ability
+#  of plugins to log the IP addresses of players.
 #
-#   Default: false
+#   Default: true
 #
-#  @ System properties
+#  @ minecraft.properties
+#    - `log-ips`
 # =====================================================
+ip-addresses = true
+
+# =====================================================
+#  Whether to remap Spigot mapped stacktraces
+# to Mojang mappings in logging.
+# Has no impact on Mojang mapped servers.
+#
+#   Default: true
+#
+#  @ config/paper-global.yml
+#    - `logging.deobfuscate-stacktraces`
+# =====================================================
+deobfuscate-stacktraces = true
+
+# =====================================================
+#  Whether to log commands executed by players,
+#  in chat or on signs.
+#  This currently logs in the format
+#  "<playername> issued server command: <command>".
+#
+#   Default: true
+#
+#  @ spigot.yml
+#    - `commands.log`
+# =====================================================
+commands = true
+
+# =====================================================
+#  Whether to log deaths of entities
+#  with custom names to console and latest.log.
+#
+#   Default: true
+#
+#  @ spigot.yml
+#    - `settings.log-named-deaths`
+# =====================================================
+named-deaths = true
+
+# =====================================================
+#  Whether to log villager deaths and
+#  witch transformations to console and latest.log.
+#
+#   Default: true
+#
+#  @ spigot.yml
+#    - `settings.log-villager-deaths`
+# =====================================================
+villager-deaths = true

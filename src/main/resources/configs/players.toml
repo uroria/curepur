@@ -1,0 +1,280 @@
+
+#  ██████╗ ██╗      █████╗ ██╗   ██╗███████╗██████╗ ███████╗
+#  ██╔══██╗██║     ██╔══██╗╚██╗ ██╔╝██╔════╝██╔══██╗██╔════╝
+#  ██████╔╝██║     ███████║ ╚████╔╝ █████╗  ██████╔╝███████╗
+#  ██╔═══╝ ██║     ██╔══██║  ╚██╔╝  ██╔══╝  ██╔══██╗╚════██║
+#  ██║     ███████╗██║  ██║   ██║   ███████╗██║  ██║███████║
+#  ╚═╝     ╚══════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═╝╚══════╝
+#
+#  - Gameplay
+#  - Whitelist
+#  - Packets
+#
+#  Credits:
+#   - YouHaveTrouble's Optimization guide: https://github.com/YouHaveTrouble/minecraft-optimization
+#   - Paper's Config docs: https://docs.papermc.io/paper/reference/configuration
+
+
+
+# ========================================================================
+#
+#    ██████   █████  ███    ███ ███████ ██████  ██       █████  ██    ██
+#   ██       ██   ██ ████  ████ ██      ██   ██ ██      ██   ██  ██  ██
+#   ██   ███ ███████ ██ ████ ██ █████   ██████  ██      ███████   ████
+#   ██    ██ ██   ██ ██  ██  ██ ██      ██      ██      ██   ██    ██
+#    ██████  ██   ██ ██      ██ ███████ ██      ███████ ██   ██    ██
+#
+#
+#
+#  - Gamemode
+#  - Hardcore and PVP
+#  - View- and simulation-distance
+# ========================================================================
+[gameplay]
+
+# =====================================================
+#  Defines the mode of gameplay.
+#  (Allowed values: "survival",
+#  "creative", "adventure", "spectator")
+#
+#   Default: "survival"
+#   Options:
+#     - "survival"
+#     - "creative"
+#     - "adventure"
+#     - "spectator"
+#
+#  @ minecraft.properties
+#    - `gamemode`
+# =====================================================
+gamemode = "survival"
+
+# =====================================================
+#  Force players to join in the default game mode.
+#  This will reset their previous game mode
+#  when they reconnect.
+#
+#   Default: false
+#
+#  @ minecraft.properties
+#    - `force-gamemode`
+# =====================================================
+gamemode.force = false
+
+# =====================================================
+#  Set players to spectator mode if they die.
+#
+#   Default: false
+#
+#  @ minecraft.properties
+#    - `hardcore`
+# =====================================================
+hardcore = false
+
+# =====================================================
+#  Allow players to attack each other.
+#
+#   Default: true
+#
+#  @ minecraft.properties
+#    - `pvp`
+# =====================================================
+pvp = true
+
+# =====================================================
+#  Sets the amount of world data the server
+#  sends the client, measured in chunks in each
+#  direction of the player (radius, not diameter).
+#  It determines the server-side viewing distance.
+#
+#   Default: 10
+#   Recommend: 7
+#   Min: 3
+#   Max: 32
+#
+#  @ minecraft.properties
+#    - `view-distance`
+# =====================================================
+view-distance = 10
+
+# =====================================================
+#  Sets the maximum distance from players
+#  that living entities may be located in order
+#  to be updated by the server, measured in chunks
+#  in each direction of the player
+#  (radius, not diameter). If entities are outside
+#  this radius, then they will not be ticked
+#  by the server nor will they be visible to players.
+#
+#   Default: 10
+#   Recommend: 4
+#   Min: 3
+#   Max: 32
+#
+#  @ minecraft.properties
+#    - `simulation-distance`
+# =====================================================
+simulation-distance = 10
+
+# =====================================================
+#  Sets whether the server should allow players
+#  to collide with one another. This option can
+#  be broken by plugins interacting
+#  with the scoreboard. If you are having trouble
+#  with this option, try without plugins installed.
+#
+#   Default: true
+#
+#  @ config/paper-global.yml
+#    - `collissions.enable-player-collisions`
+# =====================================================
+enable-collisions = true
+
+
+
+# ========================================================================
+#
+#   ██     ██ ██   ██ ██ ████████ ███████ ██      ██ ███████ ████████
+#   ██     ██ ██   ██ ██    ██    ██      ██      ██ ██         ██
+#   ██  █  ██ ███████ ██    ██    █████   ██      ██ ███████    ██
+#   ██ ███ ██ ██   ██ ██    ██    ██      ██      ██      ██    ██
+#    ███ ███  ██   ██ ██    ██    ███████ ███████ ██ ███████    ██
+#
+#
+#
+#  - Enforce
+# ========================================================================
+[whitelist]
+
+# =====================================================
+#  Enables a whitelist on the server.
+#  If enabled, the server will only allow
+#  selected users to connect.
+#
+#   Default: false
+#
+#  @ minecraft.properties
+#    - `white-list`
+# =====================================================
+enabled = false
+
+# =====================================================
+#  If enabled, the server will kick players
+#  who are not on the whitelist,
+#  but already connected.
+#
+#   Default: false
+#
+#  @ minecraft.properties
+#    - `enforce-whitelist`
+# =====================================================
+enforce = false
+
+
+
+# ========================================================================
+#
+#   ██████   █████   ██████ ██   ██ ███████ ████████ ███████
+#   ██   ██ ██   ██ ██      ██  ██  ██         ██    ██
+#   ██████  ███████ ██      █████   █████      ██    ███████
+#   ██      ██   ██ ██      ██  ██  ██         ██         ██
+#   ██      ██   ██  ██████ ██   ██ ███████    ██    ███████
+#
+#
+#
+#  - Transfers
+#  - Hardcore and PVP
+#  - View- and simulation-distance
+# ========================================================================
+[packets]
+
+# =====================================================
+#  Whether this server accepts transfers from other
+#  servers using the transfer command/packet.
+#  If this is set to false,
+#  the server will disconnect the client.
+#
+#   Default: false
+#
+#  @ minecraft.properties
+#    - `accept-transfers`
+# =====================================================
+accept-transfers = false
+
+# =====================================================
+#  Means that users will not be kicked if
+#  they fly whilst in Survival mode.
+#  This is likely to occur through hacking
+#  however there can be false positives.
+#
+#   Default: false
+#   Recommend: true
+#
+#  @ minecraft.properties
+#    - `allow-flight`
+# =====================================================
+allow-flight = false
+
+# =====================================================
+#  Controls how fast a client can move in one packet.
+#  If triggered, the server logs
+#  to console and prevents the move.
+#
+#   Default: 10.0
+#
+#  @ spigot.yml
+#    - `settings.moved-to-quickly-multiplier`
+# =====================================================
+moved-to-quickly-multiplier = 10.0
+
+# =====================================================
+#  Controls how far the client can move
+#  per move-packet, defined as the distance
+#  in blocks squared. If triggered, the server logs
+#  to console and prevents the move.
+#
+#   Default: 0.0625
+#
+#  @ spigot.yml
+#    - `settings.moved-wrongly-threshold`
+# =====================================================
+moved-wrongly-threshold = 0.0625
+
+# =====================================================
+#  The action to take once the limit
+#  has been violated. Possible values are DROP
+#  which will ignore packets over the limit,
+#  and KICK which will kick players
+#  for exceeding the limit.
+#
+#   Default: "KICK"
+#   Options:
+#     - "DROP"
+#     - "KICK"
+#
+#  @ config/paper-global.yml
+#    - `packet-limiter.all-packets.action`
+# =====================================================
+limiter.action = "KICK"
+
+# =====================================================
+#  The interval, in seconds,
+#  for which max-packet-rate should apply.
+#
+#   Default: 7.0
+#
+#  @ config/paper-global.yml
+#    - `packet-limiter.all-packets.interval`
+# =====================================================
+limiter.interval = 7.0
+
+# =====================================================
+#  The number of packets allowed per player
+#  within the interval.
+#
+#   Default: 500.0
+#
+#  @ config/paper-global.yml
+#    - `packet-limiter.all-packets.max-packet-rate`
+# =====================================================
+limiter.max-rate = 500.0
