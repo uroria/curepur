@@ -194,10 +194,10 @@ index 99597258e8e88cd9e2c901c4ac3ff7faeeabee2b..dcc7ba70e0eaa1e6c73da2a5cdaf795b
  
          if (stream != null) {
 diff --git a/src/main/java/org/spigotmc/WatchdogThread.java b/src/main/java/org/spigotmc/WatchdogThread.java
-index abe225593d325afee56f5b3a8f75aafc42a4560b..5f9ff0d9ffb5465588109ae69d72d6cf6a70bd64 100644
+index 08230ef6a705904440a677fba4c65386a3f540ed..dd788b4c6fe850073c0548143ee48f73491c3ed6 100644
 --- a/src/main/java/org/spigotmc/WatchdogThread.java
 +++ b/src/main/java/org/spigotmc/WatchdogThread.java
-@@ -155,14 +155,14 @@ public class WatchdogThread extends Thread
+@@ -155,14 +155,14 @@ public class WatchdogThread extends io.papermc.paper.util.TickThread // Paper -
                  if (isLongTimeout) {
                  // Paper end
                  log.log( Level.SEVERE, "------------------------------" );
@@ -215,7 +215,7 @@ index abe225593d325afee56f5b3a8f75aafc42a4560b..5f9ff0d9ffb5465588109ae69d72d6cf
                  //
                  if ( net.minecraft.world.level.Level.lastPhysicsProblem != null )
                  {
-@@ -184,12 +184,12 @@ public class WatchdogThread extends Thread
+@@ -184,12 +184,12 @@ public class WatchdogThread extends io.papermc.paper.util.TickThread // Paper -
                  // Paper end
                  } else
                  {
@@ -230,7 +230,7 @@ index abe225593d325afee56f5b3a8f75aafc42a4560b..5f9ff0d9ffb5465588109ae69d72d6cf
                  ca.spottedleaf.moonrise.patches.chunk_system.scheduling.ChunkTaskScheduler.dumpAllChunkLoadInfo(MinecraftServer.getServer(), isLongTimeout); // Paper - rewrite chunk system
                  this.dumpTickingInfo(); // Paper - log detailed tick information
                  WatchdogThread.dumpThread( ManagementFactory.getThreadMXBean().getThreadInfo( MinecraftServer.getServer().serverThread.getId(), Integer.MAX_VALUE ), log );
-@@ -205,7 +205,7 @@ public class WatchdogThread extends Thread
+@@ -205,7 +205,7 @@ public class WatchdogThread extends io.papermc.paper.util.TickThread // Paper -
                      WatchdogThread.dumpThread( thread, log );
                  }
                  } else {
