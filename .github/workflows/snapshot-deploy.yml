@@ -2,7 +2,8 @@ name: Push Maven Central Publication
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - 'ver/**'
 
 jobs:
   build:
