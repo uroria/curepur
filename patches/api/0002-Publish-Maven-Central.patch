@@ -1,0 +1,84 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: julian-siebert <mail@julian-siebert.de>
+Date: Sat, 27 Jul 2024 08:58:08 +0000
+Subject: [PATCH] Publish-Maven-Central
+
+
+diff --git a/build.gradle.kts b/build.gradle.kts
+index ea3ad97909de951efa0ad322df766689339b8af6..35c8001216fd46519aa93f9ce60c80c49b05944b 100644
+--- a/build.gradle.kts
++++ b/build.gradle.kts
+@@ -1,7 +1,13 @@
++import net.thebugmc.gradle.sonatypepublisher.PublishingType // Curepur
++
+ plugins {
+     `java-library`
+     `maven-publish`
+     idea // Paper
++    // Curepur start
++    signing
++    id("net.thebugmc.gradle.sonatype-central-portal-publisher") version("1.2.3")
++    // Curepur end
+ }
+ 
+ java {
+@@ -223,3 +229,58 @@ tasks.check {
+     dependsOn(scanJarForOldGeneratedCode)
+ }
+ // Paper end
++
++/// Curepur start
++centralPortal {
++    username = System.getenv("SONATYPE_USERNAME")
++    password = System.getenv("SONATYPE_PASSWORD")
++
++    publishingType = PublishingType.AUTOMATIC
++
++    name = "curepur-api"
++
++    pom {
++        name = "curepur-api"
++        url = "https://github.com/uroria/curepur"
++        description = "Curepur API"
++
++        licenses {
++            license {
++                name = "Apache 2.0"
++                url = "https://github.com/uroria/curepur/blob/main/LICENSE"
++            }
++        }
++
++        developers {
++            developer {
++                id = "julian-siebert"
++                name = "Julian Siebert"
++                organization = "Uroria"
++                organizationUrl = "https://github.com/uroria"
++                email = "mail@julian-siebert.de"
++            }
++        }
++        scm {
++            connection = "scm:git:git://github.com/uroria/curepur.git"
++            developerConnection = "scm:git:git@github.com:uroria/curepur.git"
++            url = "https://github.com/uroria/curepur"
++            tag = "HEAD"
++        }
++
++        ciManagement {
++            system = "GitHub Actions"
++            url = "https://github.com/uroria/curepur/actions"
++        }
++    }
++}
++
++signing {
++    isRequired = System.getenv("CI") != null
++
++    val privateKey = System.getenv("GPG_PRIVATE_KEY")
++    val passphrase = System.getenv("GPG_PASSPHRASE")
++    useInMemoryPgpKeys(privateKey, passphrase)
++
++    sign(publishing.publications)
++}
++/// Curepur end
+\ No newline at end of file

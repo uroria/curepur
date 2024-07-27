@@ -5,7 +5,7 @@ Subject: [PATCH] Root-Module-SHADE
 
 
 diff --git a/build.gradle.kts b/build.gradle.kts
-index 1f5963a0c2868f84906ccea3b641b034a8b3bd9d..87a0edc61215a816a9e83e80e7dba57045d4b013 100644
+index e0b6dc1020d90120f76a35c8e9af3a42f37dd0ad..9c725e66e3d3d11cd0b1a151c50c766f9d298e72 100644
 --- a/build.gradle.kts
 +++ b/build.gradle.kts
 @@ -13,6 +13,10 @@ configurations.named(log4jPlugins.compileClasspathConfigurationName) {
@@ -19,7 +19,7 @@ index 1f5963a0c2868f84906ccea3b641b034a8b3bd9d..87a0edc61215a816a9e83e80e7dba570
      implementation(project(":curepur-api")) // Purpur // Curepur
      // Paper start
      implementation("org.jline:jline-terminal-jansi:3.21.0")
-@@ -136,6 +140,7 @@ tasks.serverJar {
+@@ -140,6 +144,7 @@ tasks.serverJar {
              }
          }
      })
