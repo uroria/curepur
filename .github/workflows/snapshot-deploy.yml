@@ -25,6 +25,12 @@ jobs:
         id: vars
         run: |
           echo "short_commit_hash=${GITHUB_SHA::10}" >> $GITHUB_OUTPUT
+          
+      - name: Configure Git
+        run: git config --global user.email "action@github.com" && git config --global user.name "Github Action"
+
+      - name: Apply patches
+        run: ./gradlew applyPatches --stacktrace
 
       - name: Publish to Sonatype
         env:
