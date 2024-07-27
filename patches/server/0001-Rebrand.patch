@@ -154,19 +154,6 @@ index 710477ae27ebc5afdf0012ef0867d05efd293c24..d019d392a4d8a0d157b1b09f4a2558a8
  
      public CrashReport(String message, Throwable cause) {
          io.papermc.paper.util.StacktraceDeobfuscator.INSTANCE.deobfuscateThrowable(cause); // Paper
-diff --git a/src/main/java/net/minecraft/server/MinecraftServer.java b/src/main/java/net/minecraft/server/MinecraftServer.java
-index 7115c04cacfd373b2d9ce0e34460aa695bb65bcd..658cd6d19ee2341abe1459e4885d225b09ee24a4 100644
---- a/src/main/java/net/minecraft/server/MinecraftServer.java
-+++ b/src/main/java/net/minecraft/server/MinecraftServer.java
-@@ -1032,7 +1032,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
-         shutdownThread = Thread.currentThread();
-         org.spigotmc.WatchdogThread.doStop(); // Paper
-         if (!isSameThread()) {
--            MinecraftServer.LOGGER.info("Stopping main thread (Ignore any thread death message you see! - DO NOT REPORT THREAD DEATH TO PURPUR)"); // Purpur
-+            MinecraftServer.LOGGER.info("Stopping main thread (Ignore any thread death message you see! - DO NOT REPORT THREAD DEATH TO CUREPUR)"); // Purpur // Curepur
-             while (this.getRunningThread().isAlive()) {
-                 this.getRunningThread().stop();
-                 try {
 diff --git a/src/main/java/org/bukkit/craftbukkit/scheduler/CraftScheduler.java b/src/main/java/org/bukkit/craftbukkit/scheduler/CraftScheduler.java
 index ca8ae8e1c51b937dac916e0b0dc94b5e2e61efeb..139e7c2ca9c50f3c7e022c1662d4a815f84baf53 100644
 --- a/src/main/java/org/bukkit/craftbukkit/scheduler/CraftScheduler.java
