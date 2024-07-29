@@ -1,18 +1,63 @@
 [![Logo](https://github.com/Uroria/.github/blob/main/github_banner.png?raw=true)](https://uroria.com)
 
 # Curepur
+[![Maven Central](https://img.shields.io/maven-central/v/com.uroria.stable/curepur-api?label=stable&style=for-the-badge&logo=apachemaven&logoColor=%236CEFF0&labelColor=%232D2D2D&color=%233881d9)](https://central.sonatype.com/artifact/com.uroria.stable/curepur-api)
+[![Maven Central](https://img.shields.io/maven-central/v/com.uroria.latest/curepur-api?label=latest&style=for-the-badge&logo=apachemaven&logoColor=%236CEFF0&labelColor=%232D2D2D&color=%233881d9)](https://central.sonatype.com/artifact/com.uroria.latest/curepur-api)
+[![Discord](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fdiscord.com%2Fapi%2Finvites%2FRGX8rPshFG%3Fwith_counts%3Dtrue&query=%24.approximate_presence_count&style=for-the-badge&logo=discord&logoColor=%236CEFF0&labelColor=%232D2D2D&color=%233881d9&label=Users%20Online)](https://dc.uroria.com/)
 
-[![Website](https://img.shields.io/badge/website-%23.svg?style=for-the-badge&color=%232D2D2D&logo=data:image/svg%2bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgNjQwIDUxMiI+PCEtLSEgRm9udCBBd2Vzb21lIFBybyA2LjQuMiBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZSAoQ29tbWVyY2lhbCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyMyBGb250aWNvbnMsIEluYy4gLS0+PGRlZnM+PHN0eWxlPi5mYS1zZWNvbmRhcnl7b3BhY2l0eTowLjQ7ZmlsbDojNmNlZmYwO30uZmEtcHJpbWFyeXtmaWxsOiM2Y2VmZjA7fTwvc3R5bGU+PC9kZWZzPjxwYXRoIGNsYXNzPSJmYS1wcmltYXJ5IiBkPSJNMzA0IDY0YTE0NCAxNDQgMCAxIDAgMCAyODggMTQ0IDE0NCAwIDEgMCAwLTI4OHpNMTExIDM2N2MtOS40IDkuNC05LjQgMjQuNiAwIDMzLjlzMjQuNiA5LjQgMzMuOSAwbDE4LjUtMTguNWMzNC4zIDI3LjcgNzQuOSA0My44IDExNi41IDQ4LjNWNDY0SDE4NGMtMTMuMyAwLTI0IDEwLjctMjQgMjRzMTAuNyAyNCAyNCAyNEg0MjRjMTMuMyAwIDI0LTEwLjcgMjQtMjRzLTEwLjctMjQtMjQtMjRIMzI4VjQzMC43YzQ5LjEtNS4zIDk2LjgtMjYuNyAxMzQuNC02NC4zYzgxLjctODEuNyA4Ny4xLTIxMSAxNi4xLTI5OC45TDQ5NyA0OWM5LjQtOS40IDkuNC0yNC42IDAtMzMuOXMtMjQuNi05LjQtMzMuOSAwTDQyOC41IDQ5LjZjLTkuNCA5LjQtOS40IDI0LjYgMCAzMy45YzY4LjcgNjguNyA2OC43IDE4MC4yIDAgMjQ4LjlzLTE4MC4yIDY4LjctMjQ4LjkgMGMtOS40LTkuNC0yNC42LTkuNC0zMy45IDBMMTExIDM2N3oiLz48cGF0aCBjbGFzcz0iZmEtc2Vjb25kYXJ5IiBkPSIiLz48L3N2Zz4=)](https://uroria.com)
-[![Discord](https://img.shields.io/badge/discord-%23.svg?label=&style=for-the-badge&logo=discord&logoColor=%236CEFF0&color=%232D2D2D)](https://dc.uroria.com)
-[![Twitter](https://img.shields.io/badge/@urorianetwork-%23.svg?style=for-the-badge&logo=x&logoColor=%236CEFF0&color=%232D2D2D)](https://twitter.uroria.com)
-[![YouTube](https://img.shields.io/badge/@uroria-%23.svg?style=for-the-badge&logo=youtube&logoColor=%236CEFF0&color=%232D2D2D)](https://yt.uroria.com)
+A [Purpur](https://github.com/purpurmc/purpur) fork aiming to provide a better experience in maintaining, developing and 
+building minecraft networks.
 
-**Curepur** is a replacement for Purpur servers designed for a better maintenance-experience.
-It doesn't add any gameplay features and mostly no more performance benefits.
-This project is made for experienced developers or maintainers of Minecraft servers.
+## Installation
+- Visit the [Releases page](https://github.com/uroria/core/releases)
+- Download the **latest stable release** `curepur-server-x.x.x-Rx.x.jar`
+- Copy it in your servers folder
+- Launch the `curepur-server-x.x.x-Rx.x.jar` like traditional minecraft servers
+- Configure it via the configuration files inside the `configs` directory
+- Restart the server
 
-**More soon.**
+
+## Usage
+To use the api for developing your own plugins add the following
+dependency to your project.
+
+**Replace `$VERSION` with your Curepur servers version.**
+
+### Gradle (Groovy)
+```groovy
+// build.gradle
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly 'com.uroria.stable:curepur-api:$VERSION'
+}
+```
+
+### Gradle (Kotlin)
+```kotlin
+// build.gradle.kts
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly("com.uroria.stable:curepur-api:$VERSION")
+}
+```
+
+### Maven
+```xml
+<dependencies>
+    <dependency>
+        <groupId>com.uroria.stable</groupId>
+        <artifactId>curepur-api</artifactId>
+        <version>$VERSION</version>
+        <scope>system</scope>
+    </dependency>
+</dependencies>
+```
 
 ## License
-
 This project is licensed under the [**MIT License**](LICENSE).
