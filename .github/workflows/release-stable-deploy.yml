@@ -23,6 +23,8 @@ jobs:
         with:
           java-version: '21'
           distribution: 'temurin'
+      - name: Configure Git
+        run: git config --global user.email "action@github.com" && git config --global user.name "Github Action"
 
       - name: Apply patches
         run: ./gradlew applyPatches --stacktrace
