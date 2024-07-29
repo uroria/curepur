@@ -18,6 +18,10 @@ allprojects {
     }
 }
 
+val channel = System.getenv("PROJECT_CHANNEL") ?: "dev" // dev (local), stable, latest
+group = "com.uroria.$channel"
+version = "${rootProject.version}-${System.getenv("PROJECT_VERSION")?: "dev"}"
+
 val paperMavenPublicUrl = "https://repo.papermc.io/repository/maven-public/"
 
 subprojects {

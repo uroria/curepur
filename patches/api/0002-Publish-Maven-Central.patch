@@ -5,11 +5,11 @@ Subject: [PATCH] Publish-Maven-Central
 
 
 diff --git a/build.gradle.kts b/build.gradle.kts
-index ea3ad97909de951efa0ad322df766689339b8af6..35c8001216fd46519aa93f9ce60c80c49b05944b 100644
+index ea3ad97909de951efa0ad322df766689339b8af6..6e7ccf7c303ede2225f85f2052b8d2346b5102c4 100644
 --- a/build.gradle.kts
 +++ b/build.gradle.kts
 @@ -1,7 +1,13 @@
-+import net.thebugmc.gradle.sonatypepublisher.PublishingType // Curepur
++import net.thebugmc.gradle.sonatypepublisher.PublishingType.* // Curepur
 +
  plugins {
      `java-library`
@@ -22,17 +22,37 @@ index ea3ad97909de951efa0ad322df766689339b8af6..35c8001216fd46519aa93f9ce60c80c4
  }
  
  java {
-@@ -223,3 +229,58 @@ tasks.check {
+@@ -100,7 +106,7 @@ configurations {
+     for (config in outgoing) {
+         config {
+             outgoing {
+-                capability("${project.group}:${project.name}:${project.version}")
++                capability("${rootProject.group}:${project.name}:${project.version}")
+                 capability("io.papermc.paper:paper-mojangapi:${project.version}")
+                 capability("com.destroystokyo.paper:paper-mojangapi:${project.version}")
+             }
+@@ -132,7 +138,7 @@ val generateApiVersioningFile by tasks.registering {
+ 
+ tasks.jar {
+     from(generateApiVersioningFile.map { it.outputs.files.singleFile }) {
+-        into("META-INF/maven/${project.group}/${project.name}")
++        into("META-INF/maven/${rootProject.group}/${project.name}")
+     }
+     manifest {
+         attributes(
+@@ -223,3 +229,60 @@ tasks.check {
      dependsOn(scanJarForOldGeneratedCode)
  }
  // Paper end
 +
 +/// Curepur start
++val channel = System.getenv("PROJECT_CHANNEL") ?: "dev" // dev (local), stable, latest
++
 +centralPortal {
 +    username = System.getenv("SONATYPE_USERNAME")
 +    password = System.getenv("SONATYPE_PASSWORD")
 +
-+    publishingType = PublishingType.AUTOMATIC
++    publishingType = if (channel == "latest") AUTOMATIC else USER_MANAGED
 +
 +    name = "curepur-api"
 +

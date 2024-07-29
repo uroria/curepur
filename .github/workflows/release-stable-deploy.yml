@@ -1,41 +1,34 @@
-name: Push Maven Central Publication
+name: Publish Stable
 
 on:
-  push:
-    branches:
-      - 'ver/**'
+  release:
+    types:
+      - published
 
 jobs:
-  build:
-    runs-on: [self-hosted, Linux, X64]
-    if: "contains(github.event.commits[0].message, '[pub]')"
+  portal:
+    name: Publish to Maven Central
+    runs-on: [self-hosted]
     env:
       SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
       SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
       GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
       GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+      PROJECT_VERSION: ${{ github.event.release.tag_name }}
+      PROJECT_CHANNEL: "stable"
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v2
       - name: Set up JDK 21
         uses: actions/setup-java@v2
         with:
           java-version: '21'
           distribution: 'temurin'
-
-      - name: Set outputs
-        id: vars
-        run: |
-          echo "short_commit_hash=${GITHUB_SHA::10}" >> $GITHUB_OUTPUT
-          
       - name: Configure Git
         run: git config --global user.email "action@github.com" && git config --global user.name "Github Action"
 
       - name: Apply patches
         run: ./gradlew applyPatches --stacktrace
 
-      - name: Publish to Sonatype
-        env:
-          CORE_VERSION: ${{ steps.vars.outputs.short_commit_hash }}
+      - name: Publish to Sonatype Central Portal
         run: |
-          ./gradlew publishToCentralPortal
-          echo "Version: ${SHORT_COMMIT_HASH}" >> $GITHUB_STEP_SUMMARY
+          ./gradlew :curepur-api:publishToCentralPortal --stacktrace
